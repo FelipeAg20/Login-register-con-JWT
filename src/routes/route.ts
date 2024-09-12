@@ -20,4 +20,4 @@ router
       
     })
     .post( "/", register)
-    .get( "/", entrar)
+    .post( "/login", entrar)
