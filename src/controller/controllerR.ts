@@ -14,7 +14,7 @@ export let register = async (req:Request, res:Response) => {
         let nuevoR = req.body
         nuevoR.pass = await hash(nuevoR.pass)
         const insert = await modelos.ingresaRegistro(nuevoR)
-        res.status(200).json({messaje:'Creado con exito'})
+        res.status(200).json({messaje:'Creado con exito',dni:nuevoR.dni})
     }
 
 
