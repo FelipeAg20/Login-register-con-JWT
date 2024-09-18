@@ -8,7 +8,7 @@ const esquema = z.object({
     email: z.string().email("Debe ser un email válido"),
   });
 
-export function validacionRegis(obj:any){
+export function  validacionRegis(obj:any){
     return esquema.safeParse(obj)
 
 }

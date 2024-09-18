@@ -1,8 +1,8 @@
-import  Express  from "express";
+
 import { Request,Response } from "express";
 import { validacionRegis } from "../middleware/validacion";
-import { modelos } from "../model/modelR";
-import {hash} from "../middleware/hash";
+
+import { serviceUser } from "../services/servicesU";
 
 export let register = async (req:Request, res:Response) => {
     console.log(req.body);
@@ -12,11 +12,10 @@ export let register = async (req:Request, res:Response) => {
          console.log(result.error)
     }else{
         let nuevoR = req.body
-        nuevoR.pass = await hash(nuevoR.pass)
-        const insert = await modelos.ingresaRegistro(nuevoR)
+
+        const nuevo = await serviceUser.hashRegister(nuevoR)
+        
         res.status(200).json({messaje:'Creado con exito',dni:nuevoR.dni})
     }
-
-
 
 };

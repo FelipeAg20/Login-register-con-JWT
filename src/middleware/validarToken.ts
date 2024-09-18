@@ -14,6 +14,7 @@ export async function validarToken(
   const key = process.env.TOKEN;
   try {
     const verificar = Jwt.verify(token, key as string);
+    // req.body.id=verificar.id;
     next();
   } catch {
     return res
